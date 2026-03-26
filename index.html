@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChaiKadai | சென்னை டீ கடை - Chennai's Soul, Served Hot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- AUTHENTIC TAMIL NADU TEA KADAI DESIGN --- */
+        :root {
+            --color-kadai-orange: #ff6b00;      /* Classic kadai signboard orange */
+            --color-kadai-yellow: #ffcc00;      /* Bright yellow like tea kadai boards */
+            --color-turmeric: #e6a800;          /* Manjal - Turmeric yellow */
+            --color-clay: #c2410c;              /* Spicy red */
+            --color-coffee: #3e1f08;            /* Strong filter coffee brown */
+            --color-steel: #e2e8f0;             /* Stainless steel tumbler */
+            --color-bench-blue: #1e40af;        /* Plastic bench blue */
+            --color-cream: #fff8e1;             /* Idli batter cream */
+            --color-leaf-green: #15803d;        /* Curry leaf green */
+            
+            --font-tamil: 'Baloo Tamma 2', cursive;  /* Tamil-style rounded font */
+            --font-body: 'Poppins', sans-serif;
+            
+            --shadow-kadai: 4px 4px 0px rgba(62, 31, 8, 0.3);
+            --radius: 8px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--color-cream);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 204, 0, 0.05) 0%, transparent 50%);
+            color: var(--color-coffee);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { 
+            font-family: var(--font-tamil); 
+            font-weight: 800; 
+        }
+
+        /* Steam Animation */
+        @keyframes steam {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-20px) translateX(5px) scale(1.2); opacity: 0.3; }
+            100% { transform: translateY(-40px) translateX(0) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes pour {
+            0% { height: 0; opacity: 1; }
+            100% { height: 100px; opacity: 0.6; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 204, 0, 0.8); }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-kadai-orange) 0%, var(--color-clay) 100%);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(62, 31, 8, 0.3);
+            border-bottom: 4px solid var(--color-kadai-yellow);
+        }
+        
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: white;
+            text-shadow: 3px 3px 0 var(--color-coffee);
+            font-family: var(--font-tamil);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '☕';
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        .tamil-subtitle {
+            font-size: 0.7rem;
+            display: block;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .btn-order {
+            background: var(--color-kadai-yellow);
+            color: var(--color-coffee);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: var(--font-tamil);
+            transition: all 0.3s;
+            box-shadow: 3px 3px 0 var(--color-coffee);
+            border: 2px solid transparent;
+        }
+        
+        .btn-order:hover { 
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--color-coffee);
+            background: white;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-kadai-orange) 0%, var(--color-clay) 50%, var(--color-coffee) 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 6px solid var(--color-kadai-yellow);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 204, 0, 0.03) 10px,
+                rgba(255, 204, 0, 0.03) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 4px 4px 0 var(--color-coffee);
+        }
+
+        .hero .tamil-text {
+            color: var(--color-kadai-yellow);
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0 var(--color-coffee);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-cream);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .steam-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            font-size: 3rem;
+        }
+
+        .steam-icon {
+            position: relative;
+            animation: bounce 3s infinite;
+        }
+
+        .steam-icon:nth-child(2) { animation-delay: 0.5s; }
+        .steam-icon:nth-child(3) { animation-delay: 1s; }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--color-kadai-yellow);
+            color: var(--color-coffee);
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 800;
+            font-family: var(--font-tamil);
+            font-size: 1.2rem;
+            box-shadow: 5px 5px 0 var(--color-coffee);
+            transition: all 0.3s;
+            animation: glow 2s infinite;
+        }
+        
+        .hero-cta:hover {
+            transform: translate(-3px, -3px) scale(1.05);
+            box-shadow: 8px 8px 0 var(--color-coffee);
+        }
+
+        /* --- DECORATIVE BANNER --- */
+        .decorative-banner {
+            background: var(--color-kadai-yellow);
+            padding: 1rem;
+            text-align: center;
+            font-family: var(--font-tamil);
+            font-weight: 700;
+            color: var(--color-coffee);
+            border-top: 4px solid var(--color-kadai-orange);
+            border-bottom: 4px solid var(--color-kadai-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-banner::before,
+        .decorative-banner::after {
+            content: '';
+            margin: 0 1rem;
+        }
+
+        /* --- MENU GRID --- */
+        .menu-section { 
+            padding: 3rem 1.5rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-clay);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 2px 2px 0 var(--color-kadai-yellow);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-kadai-orange), var(--color-kadai-yellow));
+            margin: 0.5rem auto 0;
+            border-radius: 3px;
+        }
+
+        .tamil-section-title {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-coffee);
+            margin-bottom: 2rem;
+            font-family: var(--font-tamil);
+            opacity: 0.8;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 3px solid var(--color-kadai-orange);
+            box-shadow: var(--shadow-kadai);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-kadai-yellow), var(--color-kadai-orange));
+        }
+        
+        .menu-item:hover { 
+            transform: translateY(-5px);
+            box-shadow: 6px 8px 0 rgba(62, 31, 8, 0.4);
+            border-color: var(--color-clay);
+        }
+
+        .item-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .item-name { 
+            font-weight: 800; 
+            font-size: 1.3rem;
+            font-family: var(--font-tamil);
+            color: var(--color-coffee);
+        }
+
+        .item-price { 
+            color: var(--color-clay); 
+            font-weight: 800;
+            font-size: 1.4rem;
+            font-family: var(--font-tamil);
+            background: var(--color-kadai-yellow);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            box-shadow: 2px 2px 0 var(--color-coffee);
+        }
+
+        .item-desc { 
+            font-size: 0.95rem; 
+            color: #555; 
+            margin-bottom: 1rem;
+        }
+
+        .item-tags { 
+            display: flex; 
+            gap: 0.5rem; 
+            flex-wrap: wrap;
+        }
+
+        .tag { 
+            font-size: 0.75rem; 
+            padding: 0.3rem 0.8rem; 
+            background: var(--color-cream);
+            border-radius: 4px; 
+            color: var(--color-coffee);
+            font-weight: 600;
+            border: 2px solid var(--color-kadai-orange);
+        }
+
+        .tag.veg {
+            background: #dcfce7;
+            border-color: var(--color-leaf-green);
+            color: var(--color-leaf-green);
+        }
+
+        .tag.non-veg {
+            background: #fee2e2;
+            border-color: var(--color-clay);
+            color: var(--color-clay);
+        }
+
+        /* --- HOW IT WORKS --- */
+        .steps-section {
+            background: linear-gradient(135deg, var(--color-coffee) 0%, var(--color-clay) 100%);
+            color: var(--color-cream);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-top: 6px solid var(--color-kadai-yellow);
+            border-bottom: 6px solid var(--color-kadai-yellow);
+        }
+
+        .steps-section .section-title { 
+            color: var(--color-kadai-yellow);
+            text-shadow: 3px 3px 0 var(--color-coffee);
+        }
+
+        .steps-section .section-title::after { 
+            background: var(--color-kadai-yellow); 
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
+            border: 3px solid var(--color-kadai-yellow);
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .step-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        .step h3 {
+            color: var(--color-kadai-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials { 
+            padding: 4rem 1.5rem; 
+            background: linear-gradient(180deg, var(--color-cream) 0%, white 100%);
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-left: 5px solid var(--color-kadai-orange);
+            box-shadow: 4px 4px 0 rgba(62, 31, 8, 0.2);
+            position: relative;
+        }
+
+        .review-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--color-kadai-yellow);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.5;
+            font-family: serif;
+        }
+
+        .stars { 
+            color: var(--color-kadai-yellow); 
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 0 var(--color-coffee);
+        }
+
+        .reviewer { 
+            font-weight: 700; 
+            margin-top: 1rem; 
+            display: block; 
+            font-size: 0.9rem;
+            color: var(--color-clay);
+            font-family: var(--font-tamil);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--color-coffee);
+            color: var(--color-cream);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 0.9rem;
+            border-top: 6px solid var(--color-kadai-orange);
+            position: relative;
+        }
+
+        footer::before {
+            content: '🫖 ☕ 🍵';
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-tamil);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-kadai-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links { 
+            margin: 1.5rem 0; 
+            display: flex; 
+            justify-content: center; 
+            gap: 1.5rem;
+        }
+
+        .social-links a { 
+            color: var(--color-kadai-yellow);
+            text-decoration: none; 
+            opacity: 0.9;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--color-kadai-yellow);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover { 
+            opacity: 1; 
+            background: var(--color-kadai-yellow);
+            color: var(--color-coffee);
+            transform: translateY(-3px);
+        }
+
+        /* --- BENCH CULTURE SECTION --- */
+        .bench-culture {
+            background: linear-gradient(135deg, var(--color-bench-blue) 0%, #1e3a8a 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bench-culture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 40px
+            );
+        }
+
+        .bench-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .bench-culture h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-kadai-yellow);
+            text-shadow: 2px 2px 0 var(--color-coffee);
+        }
+
+        .bench-culture p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .bench-icons {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-container { flex-direction: row; }
+            .step { flex: 1; }
+            .review-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .item-name { font-size: 1.1rem; }
+            .btn-order { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="logo">
+            ChaiKadai
+            <span class="tamil-subtitle">சென்னை டீ கடை</span>
+        </div>
+        <a href="#menu" class="btn-order">Order Now 📱</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content reveal">
+            <h1>
+                Chennai's Soul,
+                <span class="tamil-text">சூடான காபி - சுவையான டீ!</span>
+                Served Hot
+            </h1>
+            
+            <div class="steam-container">
+                <span class="steam-icon">☕</span>
+                <span class="steam-icon">🫖</span>
+                <span class="steam-icon">🍵</span>
+            </div>
+
+            <p>From crispy Dosas to strong Filter Coffee in davara. Authentic Tamil street food delivered faster than you can say "ஒரு டீ சார்!"</p>
+            
+            <a href="#menu" class="hero-cta">View Menu →</a>
+        </div>
+    </section>
+
+    <!-- Decorative Banner -->
+    <div class="decorative-banner reveal">
+        🌟 24/7 Service | Free Delivery | 100% Tamil Taste 🌟
+    </div>
+
+    <!-- Menu -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title reveal">Street Favorites</h2>
+        <p class="tamil-section-title reveal">நமது சிறப்பு உணவுகள்</p>
+        
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Paper Dosa</span>
+                    <span class="item-price">₹90</span>
+                </div>
+                <p class="item-desc">Crispy, golden crepe served with coconut chutney and spicy sambar. Made on traditional tawa!</p>
+                <div class="item-tags">
+                    <span class="tag veg">Veg</span>
+                    <span class="tag">Bestseller 🔥</span>
+                </div>
+            </article>
+
+            <!-- Item 2 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Filter Coffee</span>
+                    <span class="item-price">₹40</span>
+                </div>
+                <p class="item-desc">Strong, frothy coffee brewed in traditional davara. Served in steel tumbler - just like Amma makes!</p>
+                <div class="item-tags">
+                    <span class="tag veg">Veg</span>
+                    <span class="tag">Strong 💪</span>
+                </div>
+            </article>
+
+            <!-- Item 3 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Chicken Chettinad</span>
+                    <span class="item-price">₹220</span>
+                </div>
+                <p class="item-desc">Spicy, aromatic chicken with roasted spices. Served with flaky parotta. Chettinad secret recipe!</p>
+                <div class="item-tags">
+                    <span class="tag non-veg">Non-Veg</span>
+                    <span class="tag">Spicy 🌶️</span>
+                </div>
+            </article>
+
+            <!-- Item 4 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Ghee Podi Idli</span>
+                    <span class="item-price">₹80</span>
+                </div>
+                <p class="item-desc">Soft steamed idlis smothered in gunpowder spice and pure ghee. Melts in your mouth!</p>
+                <div class="item-tags">
+                    <span class="tag veg">Veg</span>
+                    <span class="tag">Comfort 😋</span>
+                </div>
+            </article>
+
+            <!-- Item 5 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Mutton Biriyani</span>
+                    <span class="item-price">₹280</span>
+                </div>
+                <p class="item-desc">Ambur style biriyani with tender mutton and seeraga samba rice. Dum-cooked to perfection!</p>
+                <div class="item-tags">
+                    <span class="tag non-veg">Non-Veg</span>
+                    <span class="tag">Premium 👑</span>
+                </div>
+            </article>
+
+            <!-- Item 6 -->
+            <article class="menu-item reveal">
+                <div class="item-header">
+                    <span class="item-name">Parotta & Salna</span>
+                    <span class="item-price">₹110</span>
+                </div>
+                <p class="item-desc">Flaky, layered Kothu parotta served with vegetable salna. Perfect evening combo!</p>
+                <div class="item-tags">
+                    <span class="tag veg">Veg</span>
+                    <span class="tag">Classic ⭐</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Bench Culture Section -->
+    <section class="bench-culture reveal">
+        <div class="bench-content">
+            <h2>The Bench Culture 🪑</h2>
+            <div class="bench-icons">👥 ☕ 💬</div>
+            <p>Remember those evenings spent on plastic benches, discussing everything from cricket to politics over a ₹10 tea? We bring that same warmth to your doorstep. Because ChaiKadai isn't just about food—it's about community.</p>
+            <p style="font-style: italic; opacity: 0.9;">"டீ கடை தத்துவம் - Where every cup comes with free conversation!"</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section">
+        <h2 class="section-title reveal">How It Works</h2>
+        <div class="steps-container">
+            <div class="step reveal">
+                <span class="step-icon">📱</span>
+                <h3>1. Order</h3>
+                <p>Pick your favorites. One tap and we're on it!</p>
+            </div>
+            <div class="step reveal">
+                <span class="step-icon">🍳</span>
+                <h3>2. Prepare</h3>
+                <p>Fresh cooking on traditional stoves. No reheating!</p>
+            </div>
+            <div class="step reveal">
+                <span class="step-icon">🛵</span>
+                <h3>3. Deliver</h3>
+                <p>Hot food at your door faster than walking to the kadai!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title reveal">Madras Loves Us</h2>
+        <p class="tamil-section-title reveal">எங்கள் வாடிக்கையாளர்கள் சொல்வது</p>
+        
+        <div class="review-grid">
+            <div class="review-card reveal">
+                <div class="stars">★★★★★</div>
+                <p>"The Podi Idli tasted exactly like my grandmother's. The ghee smell when I opened the box was insane! Transported me back to my childhood in Mylapore."</p>
+                <span class="reviewer">- Priya S., T. Nagar</span>
+            </div>
+            <div class="review-card reveal">
+                <div class="stars">★★★★★</div>
+                <p>"Finally, authentic Chettinad chicken that actually has spice! Not that bland corporate food. This is the real deal. Parotta was perfectly flaky!"</p>
+                <span class="reviewer">- Karthik R., Anna Nagar</span>
+            </div>
+            <div class="review-card reveal">
+                <div class="stars">★★★★☆</div>
+                <p>"Fast delivery and the coffee was still frothy when it arrived. The steel tumbler packaging is a nice touch. Reminds me of the old Madras days!"</p>
+                <span class="reviewer">- Anand M., Adyar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">ChaiKadai ☕</div>
+        <p style="font-family: var(--font-tamil); margin-bottom: 1rem;">சென்னை டீ கடை</p>
+        <p>Bringing the streets of Tamil Nadu to your home, one cup at a time.</p>
+        
+        <div class="social-links">
+            <a href="#">Instagram 📸</a>
+            <a href="#">Twitter 🐦</a>
+            <a href="#">Facebook 👍</a>
+        </div>
+        
+        <p style="margin-top: 2rem; opacity: 0.8;">
+            📍 24/7 Service | 🛵 Free Delivery over ₹200 | 📞 044-TEA-KADAI<br><br>
+            &copy; 2023 ChaiKadai Foods. Made with ❤️, Turmeric & Strong Coffee.
+        </p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn-order, .hero-cta').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                let ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'translate(-50%, -50%)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                
+                let rect = this.getBoundingClientRect();
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+                ripple.style.top = (e.clientY - rect.top) + 'px';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation to styles dynamically
+        let style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    width: 200px;
+                    height: 200px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
