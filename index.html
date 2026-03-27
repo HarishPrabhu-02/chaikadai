@@ -289,6 +289,7 @@
             opacity: 0.8;
         }
 
+        /* Tea Kadai Menu Board Style */
         .menu-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -416,6 +417,7 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
             border-radius: var(--radius);
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             border: 3px solid var(--color-kadai-yellow);
             box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
@@ -640,91 +642,93 @@
         🌟 24/7 Service | Free Delivery | 100% Tamil Taste 🌟
     </div>
 
-    <!-- Menu -->
-    <section id="menu" class="menu-section">
-        <h2 class="section-title reveal">Street Favorites</h2>
-        <p class="tamil-section-title reveal">நமது சிறப்பு உணவுகள்</p>
-        
+<!-- Menu -->
+<section id="menu" class="menu-section">
+    <h2 class="section-title reveal">Tea-Time Snacks</h2>
+    <p class="tamil-section-title reveal">டீயுடன் சாப்பிட சுவையானவை</p>
+    
+    <div class="menu-board reveal">
         <div class="menu-grid">
-            <!-- Item 1 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Paper Dosa</span>
-                    <span class="item-price">₹90</span>
+            <!-- Item 1: Butter Biscuits -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Butter Biscuits <span class="tamil-sub">வெண்ணெய் பிஸ்கட்</span></span>
+                    <span class="item-desc">Crispy, buttery, melts in your mouth</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag bestseller">🔥 Classic</span>
+                    </div>
                 </div>
-                <p class="item-desc">Crispy, golden crepe served with coconut chutney and spicy sambar. Made on traditional tawa!</p>
-                <div class="item-tags">
-                    <span class="tag veg">Veg</span>
-                    <span class="tag">Bestseller 🔥</span>
-                </div>
+                <span class="item-price">₹20</span>
             </article>
 
-            <!-- Item 2 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Filter Coffee</span>
-                    <span class="item-price">₹40</span>
+            <!-- Item 2: Varki -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Varki <span class="tamil-sub">வர்கி</span></span>
+                    <span class="item-desc">Crispy fried gram snack, lightly salted</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag">🥜 Crunchy</span>
+                    </div>
                 </div>
-                <p class="item-desc">Strong, frothy coffee brewed in traditional davara. Served in steel tumbler - just like Amma makes!</p>
-                <div class="item-tags">
-                    <span class="tag veg">Veg</span>
-                    <span class="tag">Strong 💪</span>
-                </div>
+                <span class="item-price">₹15</span>
             </article>
 
-            <!-- Item 3 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Chicken Chettinad</span>
-                    <span class="item-price">₹220</span>
+            <!-- Item 3: Milk Biscuits -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Milk Biscuits <span class="tamil-sub">பால் பிஸ்கட்</span></span>
+                    <span class="item-desc">Sweet, soft biscuits perfect for dipping</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag bestseller">🥛 Kid's Favorite</span>
+                    </div>
                 </div>
-                <p class="item-desc">Spicy, aromatic chicken with roasted spices. Served with flaky parotta. Chettinad secret recipe!</p>
-                <div class="item-tags">
-                    <span class="tag non-veg">Non-Veg</span>
-                    <span class="tag">Spicy 🌶️</span>
-                </div>
+                <span class="item-price">₹20</span>
             </article>
 
-            <!-- Item 4 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Ghee Podi Idli</span>
-                    <span class="item-price">₹80</span>
+            <!-- Item 4: Methu Vadai -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Methu Vadai <span class="tamil-sub">மெது வடை</span></span>
+                    <span class="item-desc">Soft, fluffy urad dal fritters, golden fried</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag bestseller">☁️ Soft</span>
+                    </div>
                 </div>
-                <p class="item-desc">Soft steamed idlis smothered in gunpowder spice and pure ghee. Melts in your mouth!</p>
-                <div class="item-tags">
-                    <span class="tag veg">Veg</span>
-                    <span class="tag">Comfort 😋</span>
-                </div>
+                <span class="item-price">₹25</span>
             </article>
 
-            <!-- Item 5 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Mutton Biriyani</span>
-                    <span class="item-price">₹280</span>
+            <!-- Item 5: Masala Vadai -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Masala Vadai <span class="tamil-sub">மசால் வடை</span></span>
+                    <span class="item-desc">Spicy lentil fritter with onion, chili & curry leaves</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag bestseller">🌶️ Spicy</span>
+                    </div>
                 </div>
-                <p class="item-desc">Ambur style biriyani with tender mutton and seeraga samba rice. Dum-cooked to perfection!</p>
-                <div class="item-tags">
-                    <span class="tag non-veg">Non-Veg</span>
-                    <span class="tag">Premium 👑</span>
-                </div>
+                <span class="item-price">₹30</span>
             </article>
 
-            <!-- Item 6 -->
-            <article class="menu-item reveal">
-                <div class="item-header">
-                    <span class="item-name">Parotta & Salna</span>
-                    <span class="item-price">₹110</span>
+            <!-- Item 6: Filter Coffee -->
+            <article class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Filter Coffee <span class="tamil-sub">ஃபில்டர் காபி</span></span>
+                    <span class="item-desc">Strong, frothy coffee in traditional davara</span>
+                    <div class="item-tags">
+                        <span class="tag veg">Veg</span>
+                        <span class="tag bestseller">☕ Must-Try</span>
+                    </div>
                 </div>
-                <p class="item-desc">Flaky, layered Kothu parotta served with vegetable salna. Perfect evening combo!</p>
-                <div class="item-tags">
-                    <span class="tag veg">Veg</span>
-                    <span class="tag">Classic ⭐</span>
-                </div>
+                <span class="item-price">₹40</span>
             </article>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Bench Culture Section -->
     <section class="bench-culture reveal">
