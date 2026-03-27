@@ -75,6 +75,14 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Staggered reveal for section titles */
+        .section-title.reveal {
+    transform: translateY(30px) scale(0.95);
+}
+        /* When active, the title pops up with a slight scale effect for emphasis */
+.section-title.reveal.active {  
+    transform: translateY(0) scale(1);
+    }
 
         /* --- NAVIGATION --- */
         nav {
@@ -260,20 +268,21 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            width: 100%; /* Ensured it takes full width for centering */
+            font-size: 2rem; /* Changed to 2rem for better visibility */
             margin-bottom: 0.5rem;
             color: var(--color-clay);
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            display: block; /* Changed to block for centering */
+            word-wrap: break-word; /* Allow long words to break */
+            overflow-wrap: break-word; /* Ensure compatibility across browsers */
             text-shadow: 2px 2px 0 var(--color-kadai-yellow);
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 100px;
+            width: 80px; /* Shorter width for mobile screens */
             height: 6px;
             background: linear-gradient(90deg, var(--color-kadai-orange), var(--color-kadai-yellow));
             margin: 0.5rem auto 0;
@@ -300,13 +309,18 @@
 
         .menu-item {
             background: white;
-            padding: 1.5rem;
+            padding: 1.2rem;  /* Slightly reduced for mobile */
             border-radius: var(--radius);
             border: 3px solid var(--color-kadai-orange);
             box-shadow: var(--shadow-kadai);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            /* For mobile, stack name/desc and price */
         }
 
         .menu-item::before {
@@ -344,27 +358,36 @@
         .item-price { 
             color: var(--color-clay); 
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.2rem; /* Made price slightly smaller than name for better hierarchy */
             font-family: var(--font-tamil);
             background: var(--color-kadai-yellow);
             padding: 0.2rem 0.8rem;
             border-radius: 20px;
             box-shadow: 2px 2px 0 var(--color-coffee);
+            white-space: nowrap; /* Prevent price from breaking into multiple lines */
+            flex-shrink: 0; /* Prevent price from shrinking when space is tight */
+            align-self: flex-start; /* Align price to the top of the item */
         }
 
-        .item-desc { 
-            font-size: 0.95rem; 
+        .item-info {
+    /* Ensures the name and description take up available space, allowing price to be on the right */
+    flex: 1;
+    min-width: 0;  /* Allows text truncation if needed */
+        }
+
+    .item-desc { 
+            font-size: 0.85rem; /* Slightly smaller for better hierarchy */ 
             color: #555; 
             margin-bottom: 1rem;
-        }
+    }
 
-        .item-tags { 
+    .item-tags { 
             display: flex; 
             gap: 0.5rem; 
             flex-wrap: wrap;
         }
 
-        .tag { 
+    .tag { 
             font-size: 0.75rem; 
             padding: 0.3rem 0.8rem; 
             background: var(--color-cream);
@@ -374,20 +397,20 @@
             border: 2px solid var(--color-kadai-orange);
         }
 
-        .tag.veg {
+    .tag.veg {
             background: #dcfce7;
             border-color: var(--color-leaf-green);
             color: var(--color-leaf-green);
         }
 
-        .tag.non-veg {
+    .tag.non-veg {
             background: #fee2e2;
             border-color: var(--color-clay);
             color: var(--color-clay);
         }
 
         /* --- HOW IT WORKS --- */
-        .steps-section {
+    .steps-section {
             background: linear-gradient(135deg, var(--color-coffee) 0%, var(--color-clay) 100%);
             color: var(--color-cream);
             padding: 4rem 1.5rem;
@@ -396,12 +419,12 @@
             border-bottom: 6px solid var(--color-kadai-yellow);
         }
 
-        .steps-section .section-title { 
+    .steps-section .section-title { 
             color: var(--color-kadai-yellow);
             text-shadow: 3px 3px 0 var(--color-coffee);
         }
 
-        .steps-section .section-title::after { 
+    .steps-section .section-title::after { 
             background: var(--color-kadai-yellow); 
         }
         
@@ -485,6 +508,49 @@
             font-family: var(--font-tamil);
         }
 
+        /* Tamil subtitle for menu items */
+.tamil-sub {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-clay);
+    font-family: var(--font-tamil);
+    font-weight: 600;
+    margin-top: 0.1rem;
+    opacity: 0.9;
+}
+
+/* Adjust menu item layout for two-line names */
+.item-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+/* Make menu board more authentic */
+.menu-board {
+    background: 
+        linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 107, 0, 0.03) 10px,
+            rgba(255, 107, 0, 0.03) 20px
+        );
+}
+
+/* Added subtle "handwritten" feel to prices */
+.item-price {
+    font-family: var(--font-tamil);
+    letter-spacing: 0.5px;
+}
+
+/* Hover effect: subtle underline like chalk menu */
+.menu-item:hover .item-name {
+    text-decoration: underline;
+    text-decoration-color: var(--color-kadai-orange);
+    text-decoration-thickness: 2px;
+}
         /* --- FOOTER --- */
         footer {
             background: var(--color-coffee);
@@ -518,23 +584,43 @@
             gap: 1.5rem;
         }
 
-        .social-links a { 
-            color: var(--color-kadai-yellow);
-            text-decoration: none; 
-            opacity: 0.9;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--color-kadai-yellow);
-            border-radius: 25px;
-            transition: all 0.3s;
-        }
+        .social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-        .social-links a:hover { 
-            opacity: 1; 
-            background: var(--color-kadai-yellow);
-            color: var(--color-coffee);
-            transform: translateY(-3px);
-        }
+.social-links svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+}
+
+.social-links a:hover svg {
+    transform: scale(1.2);
+}
+
+/* Instagram gradient on hover */
+.social-links a[href*="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: transparent;
+    color: white;
+}
+
+/* X (Twitter) black on hover */
+.social-links a[href*="twitter"]:hover,
+.social-links a[href*="x.com"]:hover {
+    background: #000;
+    border-color: #000;
+    color: white;
+}
+
+/* Facebook blue on hover */
+.social-links a[href*="facebook"]:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    color: white;
+}
 
         /* --- BENCH CULTURE SECTION --- */
         .bench-culture {
@@ -599,7 +685,7 @@
         /* Mobile optimizations */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; // Slightly smaller for mobile */}
             .item-name { font-size: 1.1rem; }
             .btn-order { padding: 0.5rem 1rem; font-size: 0.9rem; }
         }
@@ -792,11 +878,28 @@
         <p style="font-family: var(--font-tamil); margin-bottom: 1rem;">சென்னை டீ கடை</p>
         <p>Bringing the streets of Tamil Nadu to your home, one cup at a time.</p>
         
-        <div class="social-links">
-            <a href="#">Instagram 📸</a>
-            <a href="#">Twitter 🐦</a>
-            <a href="#">Facebook 👍</a>
-        </div>
+<div class="social-links">
+    <a href="#" aria-label="Instagram" title="Follow us on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        Instagram
+    </a>
+    <a href="#" aria-label="X (Twitter)" title="Follow us on X">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        X
+    </a>
+    <a href="#" aria-label="Facebook" title="Like us on Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        Facebook
+    </a>
+</div>
         
         <p style="margin-top: 2rem; opacity: 0.8;">
             📍 24/7 Service | 🛵 Free Delivery over ₹200 | 📞 044-TEA-KADAI<br><br>
